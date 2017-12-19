@@ -1,6 +1,6 @@
 {
   "name": "cellular-automaton",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A cellular automaton that will run rules over your cells.",
   "main": "index.js",
   "scripts": {
