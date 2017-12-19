@@ -6,9 +6,26 @@
 <body>
 
 <section class="explanation">
-  <h2>cellular-automaton</h2>
+  <h1>cellular-automaton</h1>
   <p>This is a demo that uses the <a href="https://github.com/jimkang/cellular-automaton">cellular-automaton Node module</a>.</p>
-  <p>This example runs the Game of Life, however, it runs it via <strong>sequential</strong> scheduling rather than the traditional parallel scheduling, so results will be different. Living cells are represented by circles.</p>
+  <p>This example runs the Game of Life, however, it runs it via <strong>sequential</strong> scheduling rather than the <a href="https://bitstorm.org/gameoflife/">traditional</a> parallel scheduling, so results will be different. The order in which the cells are processed here is determined by a function that sorts cells from closest to furthest to the top left.</p>
+  <h2>The rules of the Game of Life</h2>
+  <dl>
+    <dt><b>For a space that is 'populated':</b></dt>
+    <dd>Each cell with one or no neighbors dies, as if by solitude.</dd>
+    <dd>Each cell with four or more neighbors dies, as if by overpopulation.</dd>
+    <dd>Each cell with two or three neighbors survives.</dd>
+  <br />
+    <dt><b>For a space that is 'empty' or 'unpopulated'</b></dt>
+    <dd>Each cell with three neighbors becomes populated.</dd>
+  </dl>
+  <h2>Legend</h2>
+  <ul>
+    <li>Living cells are represented by circles.</li>
+    <li>The acting cell whose rules were just evaluated will have its square highlighted in light yellow.</li>
+    <li>Source cells for a rule application (e.g. when a cell becomes populated as a result of a certain number of neighbors, the source cells are the neighbors) are bordered in blue.</li>
+    <li>Target cells for a rule application (e.g. when a cell dies as a result of a certain number of neighbors, the dying cell is the target) are bordered in red.</li>
+  </ul>
 </section>
 
 <section>
@@ -27,6 +44,11 @@
   <button id="step-button">Advance one time step</button>
   <button id="generation-button">Advance to the next generation</button>
 </section>
+
+<br />
+<br />
+<br />
+<br />
 
 <script src="index.js"></script>
 

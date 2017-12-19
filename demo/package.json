@@ -17,6 +17,7 @@
     "csscrown": "^1.0.0",
     "d3-selection": "^1.2.0",
     "lodash.flatten": "^4.4.0",
+    "lodash.pluck": "^3.1.2",
     "sort-cells-by-dist": "^1.0.2"
   }
 }

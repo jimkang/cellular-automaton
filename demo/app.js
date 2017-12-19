@@ -3,6 +3,8 @@ var sortCellsByDist = require('sort-cells-by-dist');
 var rules = require('../tests/fixtures/game-of-life-rules');
 var curry = require('lodash.curry');
 var flatten = require('lodash.flatten');
+var pluck = require('lodash.pluck');
+var compact = require('lodash.compact');
 var d3 = require('d3-selection');
 var accessor = require('accessor')();
 var Crown = require('csscrown');
@@ -72,10 +74,16 @@ var initialMap = `
 
 function render({ cells, logs, latestLogs }) {
   var instigatorId;
+  var sourceIds;
+  var targetIds;
   if (latestLogs.length > 0) {
+    // There could be more than one instigator instance in a run, but they'll
+    // always be the same id.
     instigatorId = latestLogs[0].instigator;
+    sourceIds = compact(flatten(flatten(pluck(latestLogs, 'sources'))));
+    targetIds = compact(flatten(flatten(pluck(latestLogs, 'targets'))));
   }
-  renderCells({ cells, instigatorId });
+  renderCells({ cells, instigatorId, sourceIds, targetIds });
   renderLogs({ logs });
 }
 
@@ -84,7 +92,7 @@ function renderControls({ onStep, onGeneration }) {
   d3.select('#generation-button').on('click', onGeneration);
 }
 
-function renderCells({ cells, instigatorId }) {
+function renderCells({ cells, instigatorId, sourceIds, targetIds }) {
   var cellSel = cellsRoot.selectAll('.cell').data(cells, accessor());
   cellSel.exit().remove();
 
@@ -108,9 +116,21 @@ function renderCells({ cells, instigatorId }) {
 
   var updateSel = newCellSel.merge(cellSel);
   updateSel.select('circle').attr('visibility', getCellVisibility);
+  updateSel
+    .select('.frame')
+    .classed('target', cellIsTarget)
+    .classed('source', cellIsSource);
 
   if (instigatorId) {
     crown(document.getElementById(instigatorId));
+  }
+
+  function cellIsTarget(cell) {
+    return targetIds && targetIds.indexOf(cell.id) !== -1;
+  }
+
+  function cellIsSource(cell) {
+    return sourceIds && sourceIds.indexOf(cell.id) !== -1;
   }
 }
 
