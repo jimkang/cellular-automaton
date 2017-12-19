@@ -1,0 +1,88 @@
+body {
+  font-family: 'helvetica neue';
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em;
+  justify-content: center;
+}
+
+.explanation {
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+a:link {
+  color: #0cfb6c;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+a:visited {
+  color: #09c153;
+}
+
+.cell circle {
+  fill: #0cbb5c;
+}
+
+.frame {
+  fill: none;
+  stroke-width: 1;
+  stroke: #888;
+}
+
+#logs-container {
+  width: 500px;
+  height: 500px;
+  overflow-y: scroll;
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+h2 {
+  font-weight: 200;
+  font-size: 2em;
+}
+
+#logs-container h2 {
+  margin-top: 0;
+}
+
+.log {
+  border: 1px solid #333;
+  padding: 1em;
+  border-radius: 1em;
+  margin-bottom: 1em;  
+}
+
+button {
+  margin-top: 1em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  line-height: 1.5em;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 32px;
+  padding-right: 32px;
+  border-radius: 1.5em;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Yu Gothic UI', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+.instigator .frame {
+  fill: hsla(60, 70%, 70%, 0.3);
+} 

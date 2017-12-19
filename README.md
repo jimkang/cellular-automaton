@@ -8,6 +8,8 @@ Supports:
 - *Sequential*, rather than parallel, updating.
 - Cells arranged in a 2D square grid in which each cell has up to eight neighbors.
 
+[Here is a demo.](http://jimkang.com/cellular-automaton/demo);
+
 Installation
 ------------
 

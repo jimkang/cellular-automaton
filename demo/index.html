@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>cellular-automaton demo</title>
+  <link rel="stylesheet" href="app.css"></link>
+</head>
+<body>
+
+<section class="explanation">
+  <h2>cellular-automaton</h2>
+  <p>This is a demo that uses the <a href="https://github.com/jimkang/cellular-automaton">cellular-automaton Node module</a>.</p>
+  <p>This example runs the Game of Life, however, it runs it via <strong>sequential</strong> scheduling rather than the traditional parallel scheduling, so results will be different. Living cells are represented by circles.</p>
+</section>
+
+<section>
+  <svg width="500" height="500">
+    <g id="cells-root"></g>
+  </svg>
+
+  <div id="logs-container">
+    <h2>EVENT LOGS</h2>
+    <ul id="logs-root">
+    </ul>
+  </div>
+</section>
+
+<section>
+  <button id="step-button">Advance one time step</button>
+  <button id="generation-button">Advance to the next generation</button>
+</section>
+
+<script src="index.js"></script>
+
+</body>
+</html>

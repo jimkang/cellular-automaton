@@ -1,0 +1,22 @@
+{
+  "name": "cellular-automaton-demo",
+  "version": "1.0.0",
+  "description": "Interactive demo of the cellular-automaton.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jim Kang",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "uglify-es": "^3.2.2"
+  },
+  "dependencies": {
+    "accessor": "^2.0.0",
+    "csscrown": "^1.0.0",
+    "d3-selection": "^1.2.0",
+    "lodash.flatten": "^4.4.0",
+    "sort-cells-by-dist": "^1.0.2"
+  }
+}
