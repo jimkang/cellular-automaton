@@ -19,6 +19,8 @@ Usage
 -----
 
       var Automaton = require('cellular-automaton');
+      var sortCellsByDist = require('sort-cells-by-dist');
+
       var automaton = Automaton({
         cellMap: `
           xoxox
@@ -42,27 +44,78 @@ Usage
           ]
         }
       },
-      order: cells => cells.map(distanceFrom00).map(addIndex).sort(aIsCloserThanB.map(getIndex))
+      orderingFn: curry(sortCellsByDist)({ col: 0, row: 0 })
     });
 
     automaton.getCells();
-    automaton.stepTurn();
+    automaton.step();
+    automaton.step();
+    automaton.step();
 
-Returns:
+`step` returns:
 
-    {
-      log: {
-        {
-          source: [0, 0],
-          target: [0, 0],
-          eventName: 'death'
-        }
+    [
+      {
+        instigator: 'cell_1_0',
+        source: ['cell_1_0'],
+        target: ['cell_1_0'],
+        event: 'death',
+        details: 'too lonely'
       },
-      cells: <mutated cells>
-      ]
-    }
+      {
+        instigator: 'cell_1_0',
+        sources: ['cell_1_0'],
+        event: 'idle'
+      }
+    ]
 
-  automaton.stepGeneration();
+`getCells` returns a list of cell objects, like so:
+
+    [
+      {
+        "col": 0,
+        "row": 0,
+        "id": "cell_0_0",
+        "type": "empty",
+        "rules": [
+          null
+        ],
+        "mapSymbol": "x"
+      },
+      {
+        "col": 1,
+        "row": 0,
+        "id": "cell_1_0",
+        "type": "empty",
+        "rules": [
+          null
+        ],
+        "mapSymbol": "x"
+      },
+      {
+        "col": 2,
+        "row": 0,
+        "id": "cell_2_0",
+        "type": "empty",
+        "rules": [
+          null
+        ],
+        "mapSymbol": "x"
+      },
+      {
+        "col": 3,
+        "row": 0,
+        "id": "cell_3_0",
+        "type": "populated",
+        "rules": [
+          null,
+          null
+        ],
+        "mapSymbol": "o"
+      }
+    ]
+
+`stepGeneration` will call `step` until an entire generation is complete, meaning that each cell is processed once.
 
 Tests
 -----
