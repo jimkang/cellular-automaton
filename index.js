@@ -38,7 +38,7 @@ function Automaton({ cellMap, cellDefs, orderingFn }) {
   // Returns logs of rule runs.
   function step() {
     var actingCell = cells[cellOrder[currentStep]];
-    var logs = compact(actingCell.rules.map(curry(runRule)(actingCell)));
+    var logs = actingCell.rules.map(curry(runRule)(actingCell));
 
     currentStep += 1;
     if (currentStep >= cellOrder.length) {
@@ -59,7 +59,16 @@ function Automaton({ cellMap, cellDefs, orderingFn }) {
   }
 
   function runRule(cell, rule) {
-    return rule(cell, getNeighbors(cell), changeCellType);
+    var log = rule(cell, getNeighbors(cell), changeCellType);
+    if (log) {
+      return log;
+    } else {
+      return {
+        instigator: cell.id,
+        sources: [cell.id],
+        event: 'idle'
+      };
+    }
   }
 
   function changeCellType(cell, type) {

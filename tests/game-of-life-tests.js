@@ -21,12 +21,24 @@ oxxxo`;
 var testSteps = [
   {
     method: 'step',
-    expectedLogs: [],
+    expectedLogs: [
+      {
+        instigator: 'cell_0_0',
+        sources: ['cell_0_0'],
+        event: 'idle'
+      }
+    ],
     expectedMap: cleanedInitialMap
   },
   {
     method: 'step',
-    expectedLogs: [],
+    expectedLogs: [
+      {
+        instigator: 'cell_0_1',
+        sources: ['cell_0_1'],
+        event: 'idle'
+      }
+    ],
     expectedMap: cleanedInitialMap
   },
   {
@@ -38,6 +50,11 @@ var testSteps = [
         target: ['cell_1_0'],
         event: 'death',
         details: 'too lonely'
+      },
+      {
+        instigator: 'cell_1_0',
+        sources: ['cell_1_0'],
+        event: 'idle'
       }
     ],
     expectedMap: `xxxox
@@ -48,7 +65,13 @@ oxxxo`
   },
   {
     method: 'step',
-    expectedLogs: [],
+    expectedLogs: [
+      {
+        instigator: 'cell_1_1',
+        sources: ['cell_1_1'],
+        event: 'idle'
+      }
+    ],
     expectedMap: `xxxox
 xxoox
 xoxxo
@@ -84,6 +107,11 @@ xxxoo`,
       [
         {
           instigator: 'cell_2_1',
+          sources: ['cell_2_1'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_2_1',
           sources: [['cell_2_0', 'cell_3_0', 'cell_3_1', 'cell_1_2']],
           targets: ['cell_2_1'],
           event: 'death',
@@ -91,6 +119,11 @@ xxxoo`,
         }
       ],
       [
+        {
+          instigator: 'cell_1_2',
+          sources: ['cell_1_2'],
+          event: 'idle'
+        },
         {
           instigator: 'cell_1_2',
           sources: [['cell_2_3', 'cell_1_3', 'cell_0_3', 'cell_0_2']],
@@ -108,9 +141,36 @@ xxxoo`,
           details: 'neighbors got together'
         }
       ],
-      [],
-      [],
       [
+        {
+          instigator: 'cell_0_3',
+          sources: ['cell_0_3'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_0_3',
+          sources: ['cell_0_3'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_3_0',
+          sources: ['cell_3_0'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_3_0',
+          sources: ['cell_3_0'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_3_1',
+          sources: ['cell_3_1'],
+          event: 'idle'
+        },
         {
           instigator: 'cell_3_1',
           sources: [['cell_2_0', 'cell_3_0', 'cell_4_2', 'cell_2_2']],
@@ -120,6 +180,11 @@ xxxoo`,
         }
       ],
       [
+        {
+          instigator: 'cell_1_3',
+          sources: ['cell_1_3'],
+          event: 'idle'
+        },
         {
           instigator: 'cell_1_3',
           sources: [
@@ -139,7 +204,18 @@ xxxoo`,
           details: 'neighbors got together'
         }
       ],
-      [],
+      [
+        {
+          instigator: 'cell_2_3',
+          sources: ['cell_2_3'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_2_3',
+          sources: ['cell_2_3'],
+          event: 'idle'
+        }
+      ],
       [
         {
           instigator: 'cell_0_4',
@@ -147,9 +223,20 @@ xxxoo`,
           target: ['cell_0_4'],
           event: 'death',
           details: 'too lonely'
+        },
+        {
+          instigator: 'cell_0_4',
+          sources: ['cell_0_4'],
+          event: 'idle'
         }
       ],
-      [],
+      [
+        {
+          instigator: 'cell_4_0',
+          sources: ['cell_4_0'],
+          event: 'idle'
+        }
+      ],
       [
         {
           instigator: 'cell_4_1',
@@ -159,7 +246,13 @@ xxxoo`,
           details: 'neighbors got together'
         }
       ],
-      [],
+      [
+        {
+          instigator: 'cell_1_4',
+          sources: ['cell_1_4'],
+          event: 'idle'
+        }
+      ],
       [
         {
           instigator: 'cell_3_3',
@@ -171,8 +264,25 @@ xxxoo`,
           details: 'neighbors got together'
         }
       ],
-      [],
-      [],
+      [
+        {
+          instigator: 'cell_2_4',
+          sources: ['cell_2_4'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_4_2',
+          sources: ['cell_4_2'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_4_2',
+          sources: ['cell_4_2'],
+          event: 'idle'
+        }
+      ],
       [
         {
           instigator: 'cell_3_4',
@@ -193,7 +303,18 @@ xxxoo`,
           details: 'neighbors got together'
         }
       ],
-      []
+      [
+        {
+          instigator: 'cell_4_4',
+          sources: ['cell_4_4'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_4_4',
+          sources: ['cell_4_4'],
+          event: 'idle'
+        }
+      ]
     ]
   },
   {
@@ -203,7 +324,13 @@ xxxxo
 oxooo
 oxooo
 xxxoo`,
-    expectedLogs: []
+    expectedLogs: [
+      {
+        instigator: 'cell_0_0',
+        sources: ['cell_0_0'],
+        event: 'idle'
+      }
+    ]
   },
   {
     method: 'step',
@@ -212,7 +339,13 @@ xxxxo
 oxooo
 oxooo
 xxxoo`,
-    expectedLogs: []
+    expectedLogs: [
+      {
+        instigator: 'cell_0_1',
+        sources: ['cell_0_1'],
+        event: 'idle'
+      }
+    ]
   },
   {
     method: 'generationStep',
@@ -222,7 +355,13 @@ ooxxo
 ooxxo
 xxxoo`,
     expectedLogs: [
-      [],
+      [
+        {
+          instigator: 'cell_1_0',
+          sources: ['cell_1_0'],
+          event: 'idle'
+        }
+      ],
       [
         {
           instigator: 'cell_1_1',
@@ -232,8 +371,30 @@ xxxoo`,
           details: 'neighbors got together'
         }
       ],
-      [],
-      [],
+      [
+        {
+          instigator: 'cell_0_2',
+          sources: ['cell_0_2'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_0_2',
+          sources: ['cell_0_2'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_2_0',
+          sources: ['cell_2_0'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_2_0',
+          sources: ['cell_2_0'],
+          event: 'idle'
+        }
+      ],
       [
         {
           instigator: 'cell_2_1',
@@ -266,6 +427,11 @@ xxxoo`,
       [
         {
           instigator: 'cell_2_2',
+          sources: ['cell_2_2'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_2_2',
           sources: [
             [
               'cell_1_1',
@@ -281,8 +447,30 @@ xxxoo`,
           details: 'too crowded'
         }
       ],
-      [],
-      [],
+      [
+        {
+          instigator: 'cell_0_3',
+          sources: ['cell_0_3'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_0_3',
+          sources: ['cell_0_3'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_3_0',
+          sources: ['cell_3_0'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_3_0',
+          sources: ['cell_3_0'],
+          event: 'idle'
+        }
+      ],
       [
         {
           instigator: 'cell_3_1',
@@ -313,6 +501,11 @@ xxxoo`,
       [
         {
           instigator: 'cell_3_2',
+          sources: ['cell_3_2'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_3_2',
           sources: [
             [
               'cell_2_1',
@@ -332,13 +525,24 @@ xxxoo`,
       [
         {
           instigator: 'cell_2_3',
+          sources: ['cell_2_3'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_2_3',
           sources: [['cell_1_2', 'cell_3_3', 'cell_3_4', 'cell_1_3']],
           targets: ['cell_2_3'],
           event: 'death',
           details: 'too crowded'
         }
       ],
-      [],
+      [
+        {
+          instigator: 'cell_0_4',
+          sources: ['cell_0_4'],
+          event: 'idle'
+        }
+      ],
       [
         {
           instigator: 'cell_4_0',
@@ -351,14 +555,30 @@ xxxoo`,
       [
         {
           instigator: 'cell_4_1',
+          sources: ['cell_4_1'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_4_1',
           sources: [['cell_3_0', 'cell_4_0', 'cell_4_2', 'cell_3_1']],
           targets: ['cell_4_1'],
           event: 'death',
           details: 'too crowded'
         }
       ],
-      [],
       [
+        {
+          instigator: 'cell_1_4',
+          sources: ['cell_1_4'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_3_3',
+          sources: ['cell_3_3'],
+          event: 'idle'
+        },
         {
           instigator: 'cell_3_3',
           sources: [['cell_4_2', 'cell_4_3', 'cell_4_4', 'cell_3_4']],
@@ -367,11 +587,61 @@ xxxoo`,
           details: 'too crowded'
         }
       ],
-      [],
-      [],
-      [],
-      [],
-      []
+      [
+        {
+          instigator: 'cell_2_4',
+          sources: ['cell_2_4'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_4_2',
+          sources: ['cell_4_2'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_4_2',
+          sources: ['cell_4_2'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_3_4',
+          sources: ['cell_3_4'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_3_4',
+          sources: ['cell_3_4'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_4_3',
+          sources: ['cell_4_3'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_4_3',
+          sources: ['cell_4_3'],
+          event: 'idle'
+        }
+      ],
+      [
+        {
+          instigator: 'cell_4_4',
+          sources: ['cell_4_4'],
+          event: 'idle'
+        },
+        {
+          instigator: 'cell_4_4',
+          sources: ['cell_4_4'],
+          event: 'idle'
+        }
+      ]
     ]
   }
 ];
