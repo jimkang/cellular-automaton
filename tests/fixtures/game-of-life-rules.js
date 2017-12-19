@@ -2,7 +2,8 @@ var pluck = require('lodash.pluck');
 
 function solitude(cell, neighbors, changeCellType) {
   var log;
-  if (neighbors.length < 2) {
+  var populatedNeighbors = neighbors.filter(isPopulated);
+  if (populatedNeighbors.length < 2) {
     changeCellType(cell, 'empty');
     log = {
       instigator: cell.id,
@@ -17,11 +18,12 @@ function solitude(cell, neighbors, changeCellType) {
 
 function overpopulation(cell, neighbors, changeCellType) {
   var log;
-  if (neighbors.length >= 4) {
+  var populatedNeighbors = neighbors.filter(isPopulated);
+  if (populatedNeighbors.length >= 4) {
     changeCellType(cell, 'empty');
     log = {
       instigator: cell.id,
-      sources: [cell.id],
+      sources: [pluck(populatedNeighbors, 'id')],
       targets: [cell.id],
       event: 'death',
       details: 'too crowded'
@@ -32,17 +34,22 @@ function overpopulation(cell, neighbors, changeCellType) {
 
 function populate(cell, neighbors, changeCellType) {
   var log;
-  if (neighbors.length >= 3) {
+  var populatedNeighbors = neighbors.filter(isPopulated);
+  if (populatedNeighbors.length >= 3) {
     changeCellType(cell, 'populated');
     log = {
       instigator: cell.id,
-      sources: [pluck(neighbors, 'id')],
+      sources: [pluck(populatedNeighbors, 'id')],
       targets: [cell.id],
       event: 'birth',
       details: 'neighbors got together'
     };
   }
   return log;
+}
+
+function isPopulated(cell) {
+  return cell.type === 'populated';
 }
 
 module.exports = {

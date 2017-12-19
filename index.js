@@ -49,7 +49,14 @@ function Automaton({ cellMap, cellDefs, orderingFn }) {
     return logs;
   }
 
-  function generationStep() {}
+  function generationStep() {
+    var generationLogs = [];
+    var nextGeneration = currentGeneration + 1;
+    while (currentGeneration < nextGeneration) {
+      generationLogs.push(step());
+    }
+    return generationLogs;
+  }
 
   function runRule(cell, rule) {
     return rule(cell, getNeighbors(cell), changeCellType);
