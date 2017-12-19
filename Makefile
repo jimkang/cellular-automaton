@@ -4,7 +4,7 @@ test:
 	node tests/game-of-life-tests.js
 
 pushall:
-	git push origin master && npm publish
+	git push origin gh-pages && npm publish
 
 prettier:
 	prettier --single-quote --write "**/*.js"
